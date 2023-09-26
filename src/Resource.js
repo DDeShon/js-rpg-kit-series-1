@@ -25,3 +25,6 @@ class Resources {
     });
   }
 }
+
+// Create one instance for the whole app to use
+export const resources = new Resources();
