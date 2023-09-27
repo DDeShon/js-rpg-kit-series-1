@@ -15,5 +15,15 @@ export class Sprite {
     this.frame = frame ?? 0;
     this.scale = scale ?? 1;
     this.position = position;
+    this.buildFrameMap();
+  }
+
+  buildFrameMap() {
+    let frameCount = 0;
+    for (let v = 0; v < this.vFrames; v++) {
+      for (let h = 0; h < this.hFrames; h++) {
+        console.log("frame", h, v);
+      }
+    }
   }
 }
