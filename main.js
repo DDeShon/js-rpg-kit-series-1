@@ -33,13 +33,6 @@ const draw = () => {
   hero.drawImage(ctx, heroPos.x, heroPos.y);
 };
 
-const hero = new Sprite({
-  resource: resources.images.hero,
-  hFrames: 3,
-  vFrames: 8,
-  frame: 1,
-});
-
 setInterval(() => {
   draw();
 }, 300);
