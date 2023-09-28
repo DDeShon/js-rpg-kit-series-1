@@ -24,9 +24,13 @@ const hero = new Sprite({
   frame: 1,
 });
 
+const heroPos = new Vector2(16 * 5, 16 * 5);
+
 const draw = () => {
   skySprite.drawImage(ctx, 0, 0);
   groundSprite.drawImage(ctx, 0, 0);
+
+  hero.drawImage(ctx, heroPos.x, heroPos.y);
 };
 
 const hero = new Sprite({
