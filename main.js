@@ -1,21 +1,23 @@
-// import "./style.css";
-
 import { resources } from "./src/Resource.js";
-import { Sprite } from "./Sprite.js";
+import { Sprite } from "./src/Sprite.js";
+import { Vector2 } from "./src/Vector2.js";
 
 const canvas = document.querySelector("#game-canvas");
 const ctx = canvas.getContext("2d");
 
-const draw = () => {
-  const sky = resources.images.sky;
-  if (sky.isLoaded) {
-    ctx.drawImage(sky.image, 0, 0);
-  }
+// Build up the scene by adding a sky, ground, and hero
+const skySprite = new Sprite({
+  resource: resources.images.sky,
+  frameSize: new Vector2(320, 180),
+});
 
-  const ground = resources.images.ground;
-  if (ground.isLoaded) {
-    ctx.drawImage(ground.image, 0, 0);
-  }
+const groundSprite = new Sprite({
+  resource: resources.images.ground,
+  frameSize: new Vector2(320, 180),
+});
+
+const draw = () => {
+  skySprite.drawImage(ctx, 0, 0);
 };
 
 const hero = new Sprite({

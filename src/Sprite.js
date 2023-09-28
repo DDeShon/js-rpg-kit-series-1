@@ -1,3 +1,5 @@
+import { Vector2 } from "./Vector2.js";
+
 export class Sprite {
   constructor({
     resource, // image to draw
@@ -36,7 +38,7 @@ export class Sprite {
       return;
     }
 
-    // Find the correct sprite sheet to use
+    // Find the correct sprite sheet frame to use
     let frameCoordX = 0;
     let frameCoordY = 0;
     const frame = this.frameMap.get(this.frame);
@@ -51,13 +53,13 @@ export class Sprite {
     ctx.drawImage(
       this.resource.image,
       frameCoordX,
-      frameCoordY,
-      frameSizeX, // how much to crop from the row of the sprite sheet
-      frameSizeY, // how much to crop from the column of the sprite sheet
-      x, // horizontal location to place sprite on canvas
-      y, // vertical location to place sprite on canvas
-      frameSizeX * this.scale, // how large to scale on X axis
-      frameSizeY * this.scale // how large to scale on Y axis
+      frameCoordY, // Top Y corner of frame
+      frameSizeX, //How much to crop from the sprite sheet (X)
+      frameSizeY, //How much to crop from the sprite sheet (Y)
+      x, //Where to place this on canvas tag X (0)
+      y, //Where to place this on canvas tag Y (0)
+      frameSizeX * this.scale, //How large to scale it (X)
+      frameSizeY * this.scale //How large to scale it (Y)
     );
   }
 }
