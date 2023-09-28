@@ -1,22 +1,29 @@
 import { Vector2 } from "./Vector2.js";
+// import { GameObject } from "./GameObject.js";
 
 export class Sprite {
   constructor({
-    resource, // image to draw
-    frameSize, // size of the image crop
-    hFrames, // horizontal frames
-    vFrames, // vertical frames
-    frame, // which frame to show
-    scale, // size of the image
-    position, // location of the image on screen
+    resource, // image we want to draw
+    frameSize, // size of the crop of the image
+    hFrames, // how the sprite arranged horizontally
+    vFrames, // how the sprite arranged vertically
+    frame, // which frame we want to show
+    scale, // how large to draw this image
+    position, // where to draw it (top left corner)
+    animations,
   }) {
+    // super({
+    //   name,
+    // });
     this.resource = resource;
     this.frameSize = frameSize ?? new Vector2(16, 16);
     this.hFrames = hFrames ?? 1;
     this.vFrames = vFrames ?? 1;
     this.frame = frame ?? 0;
+    this.frameMap = new Map();
     this.scale = scale ?? 1;
     this.position = position ?? new Vector2(0, 0);
+    this.animations = animations ?? null;
     this.buildFrameMap();
   }
 
@@ -32,6 +39,14 @@ export class Sprite {
       }
     }
   }
+
+  // step(delta) {
+  //   if (!this.animations) {
+  //     return;
+  //   }
+  //   this.animations.step(delta);
+  //   this.frame = this.animations.frame;
+  // }
 
   drawImage(ctx, x, y) {
     if (!this.resource.isLoaded) {
