@@ -39,4 +39,11 @@ export class GameLoop {
       this.rafId = requestAnimationFrame(this.mainLoop);
     }
   }
+
+  stop() {
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+    }
+    this.isRunning = false;
+  }
 }
