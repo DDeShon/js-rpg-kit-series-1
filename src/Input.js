@@ -23,7 +23,19 @@ export class Input {
     });
   }
 
-  onArrowPressed(direction) {}
+  onArrowPressed(direction) {
+    // add this arrow to the queue if it's new
+    if (this.heldDirections.indexOf(direction) === -1) {
+      this.heldDirections.unshift(direction);
+    }
+  }
 
-  onArrowReleased(direction) {}
+  onArrowReleased(direction) {
+    const index = this.heldDirections.indexOf(direction);
+    if (index === -1) {
+      return;
+    }
+    // remove this key from the list
+    this.heldDirections.splice(index, 1);
+  }
 }
