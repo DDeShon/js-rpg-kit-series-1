@@ -32,4 +32,11 @@ export class GameLoop {
 
     this.rafId = requestAnimationFrame(this.mainLoop);
   };
+
+  start() {
+    if (!this.isRunning) {
+      this.isRunning = true;
+      this.rafId = requestAnimationFrame(this.mainLoop);
+    }
+  }
 }
