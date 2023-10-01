@@ -28,12 +28,18 @@ const hero = new Sprite({
   position: new Vector2(gridCells(6), gridCells(5)),
 });
 
+const heroDestinationPosition = new Vector2(gridCells(10), gridCells(5));
+
 const shadow = new Sprite({
   resource: resources.images.shadow,
   frameSize: new Vector2(32, 32),
 });
 
 const input = new Input();
+
+const distance = moveTowards(hero, heroDestinationPosition, 1);
+
+return;
 
 const update = () => {
   if (input.direction === "DOWN") {
