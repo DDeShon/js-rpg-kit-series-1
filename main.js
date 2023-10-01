@@ -38,11 +38,11 @@ const shadow = new Sprite({
 
 const input = new Input();
 
-const distance = moveTowards(hero, heroDestinationPosition, 1);
-
-return;
-
 const update = () => {
+  const distance = moveTowards(hero, heroDestinationPosition, 1);
+
+  return;
+
   if (input.direction === "DOWN") {
     hero.position.y += 1;
     hero.frame = 0;
