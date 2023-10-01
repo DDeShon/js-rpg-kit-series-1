@@ -29,7 +29,7 @@ const hero = new Sprite({
   position: new Vector2(gridCells(6), gridCells(5)),
 });
 
-const heroDestinationPosition = new Vector2(gridCells(10), gridCells(5));
+const heroDestinationPosition = new Vector2(gridCells(13), gridCells(5));
 
 const shadow = new Sprite({
   resource: resources.images.shadow,
@@ -40,8 +40,18 @@ const input = new Input();
 
 const update = () => {
   const distance = moveTowards(hero, heroDestinationPosition, 1);
+  const hasArrived = distance <= 1;
 
-  return;
+  // attempt to move again if the hero is at the position
+  if (hasArrived) {
+    tryMove();
+  }
+};
+
+const tryMove = () => {
+  if (!input.direction) {
+    return;
+  }
 
   if (input.direction === "DOWN") {
     hero.position.y += 1;
