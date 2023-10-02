@@ -1,3 +1,5 @@
+import { Animations } from "./src/Animations.js";
+import { FrameIndexPattern } from "./src/FrameIndexPattern.js";
 import { GameLoop } from "./src/GameLoop.js";
 import { Input } from "./src/Input.js";
 import { resources } from "./src/Resource.js";
@@ -6,6 +8,12 @@ import { Vector2 } from "./src/Vector2.js";
 import { gridCells, isSpaceFree } from "./src/helpers/grid.js";
 import { moveTowards } from "./src/helpers/moveTowards.js";
 import { walls } from "./src/levels/Level1.js";
+import {
+  WALK_DOWN,
+  WALK_LEFT,
+  WALK_RIGHT,
+  WALK_UP,
+} from "./src/objects/Hero/heroAnimations.js";
 
 const canvas = document.querySelector("#game-canvas");
 const ctx = canvas.getContext("2d");
@@ -28,6 +36,12 @@ const hero = new Sprite({
   vFrames: 8,
   frame: 1,
   position: new Vector2(gridCells(6), gridCells(5)),
+  animations: new Animations({
+    walkDown: new FrameIndexPattern(WALK_DOWN),
+    walkUp: new FrameIndexPattern(WALK_UP),
+    WalkLeft: new FrameIndexPattern(WALK_LEFT),
+    walkRight: new FrameIndexPattern(WALK_RIGHT),
+  }),
 });
 
 const heroDestinationPosition = hero.position.duplicate();
