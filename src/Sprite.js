@@ -1,5 +1,5 @@
 import { Vector2 } from "./Vector2.js";
-// import { GameObject } from "./GameObject.js";
+// import {GameObject} from "./GameObject.js";
 
 export class Sprite {
   constructor({
@@ -13,7 +13,7 @@ export class Sprite {
     animations,
   }) {
     // super({
-    //   name,
+    //   name
     // });
     this.resource = resource;
     this.frameSize = frameSize ?? new Vector2(16, 16);

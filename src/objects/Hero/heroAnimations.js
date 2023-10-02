@@ -9,7 +9,6 @@ const makeStandingFrames = (rootFrame = 0) => {
     ],
   };
 };
-
 const makeWalkingFrames = (rootFrame = 0) => {
   return {
     duration: 400,

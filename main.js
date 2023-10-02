@@ -39,7 +39,7 @@ const shadow = new Sprite({
 
 const input = new Input();
 
-const update = () => {
+const update = (delta) => {
   const distance = moveTowards(hero, heroDestinationPosition, 1);
   const hasArrived = distance <= 1;
 
@@ -47,6 +47,9 @@ const update = () => {
   if (hasArrived) {
     tryMove();
   }
+
+  // work on hero animations
+  hero.step(delta);
 };
 
 const tryMove = () => {
