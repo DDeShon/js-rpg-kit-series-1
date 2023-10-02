@@ -3,8 +3,9 @@ import { Input } from "./src/Input.js";
 import { resources } from "./src/Resource.js";
 import { Sprite } from "./src/Sprite.js";
 import { Vector2 } from "./src/Vector2.js";
-import { gridCells } from "./src/helpers/grid.js";
+import { gridCells, isSpaceFree } from "./src/helpers/grid.js";
 import { moveTowards } from "./src/helpers/moveTowards.js";
+import { walls } from "./src/levels/Level1.js";
 
 const canvas = document.querySelector("#game-canvas");
 const ctx = canvas.getContext("2d");
@@ -75,8 +76,11 @@ const tryMove = () => {
   }
 
   // TODO: check if destination space is free
-  heroDestinationPosition.x = nextX;
-  heroDestinationPosition.y = nextY;
+
+  if (isSpaceFree(walls, nextX, nextY)) {
+    heroDestinationPosition.x = nextX;
+    heroDestinationPosition.y = nextY;
+  }
 };
 
 const draw = () => {
