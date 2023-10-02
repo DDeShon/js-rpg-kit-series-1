@@ -73,6 +73,10 @@ const tryMove = () => {
     nextY -= gridSize;
     hero.frame = 9;
   }
+
+  // TODO: check if destination space is free
+  heroDestinationPosition.x = nextX;
+  heroDestinationPosition.y = nextY;
 };
 
 const draw = () => {
