@@ -75,8 +75,7 @@ const tryMove = () => {
     hero.frame = 9;
   }
 
-  // TODO: check if destination space is free
-
+  // validate that the next destination is free
   if (isSpaceFree(walls, nextX, nextY)) {
     heroDestinationPosition.x = nextX;
     heroDestinationPosition.y = nextY;
