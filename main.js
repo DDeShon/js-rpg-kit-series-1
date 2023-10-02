@@ -29,7 +29,7 @@ const hero = new Sprite({
   position: new Vector2(gridCells(6), gridCells(5)),
 });
 
-const heroDestinationPosition = new Vector2(gridCells(13), gridCells(5));
+const heroDestinationPosition = hero.position.duplicate();
 
 const shadow = new Sprite({
   resource: resources.images.shadow,
@@ -66,11 +66,11 @@ const tryMove = () => {
     hero.frame = 6;
   }
   if (input.direction === "RIGHT") {
-    nextY += gridSize;
+    nextX += gridSize;
     hero.frame = 3;
   }
   if (input.direction === "LEFT") {
-    nextY -= gridSize;
+    nextX -= gridSize;
     hero.frame = 9;
   }
 
