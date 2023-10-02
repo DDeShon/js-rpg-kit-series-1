@@ -53,20 +53,24 @@ const tryMove = () => {
     return;
   }
 
+  let nextX = heroDestinationPosition.x;
+  let nextY = heroDestinationPosition.y;
+  const gridSize = 16;
+
   if (input.direction === "DOWN") {
-    hero.position.y += 1;
+    nextY += gridSize;
     hero.frame = 0;
   }
   if (input.direction === "UP") {
-    hero.position.y -= 1;
+    nextY -= gridSize;
     hero.frame = 6;
   }
   if (input.direction === "RIGHT") {
-    hero.position.x += 1;
+    nextY += gridSize;
     hero.frame = 3;
   }
   if (input.direction === "LEFT") {
-    hero.position.x -= 1;
+    nextY -= gridSize;
     hero.frame = 9;
   }
 };
