@@ -17,4 +17,18 @@ export class GameObject {
 
   // called once every frame
   step(_delta) {}
+
+  // draw entry
+  draw(ctx, x, y) {
+    const drawPosX = x + this.position.x + this.drawOffset.x;
+    const drawPosY = y + this.position.y + this.drawOffset.y;
+
+    // do the actual rendering for images
+    this.drawImage(ctx, drawPosX, drawPosY);
+
+    // pass on to children
+    this.children.forEach((child) => child.draw(ctx, drawPosX, drawPosY));
+  }
+
+  drawImage(ctx, drawPosX, drawPosY) {}
 }
