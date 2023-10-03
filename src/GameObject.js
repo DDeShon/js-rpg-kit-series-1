@@ -10,6 +10,9 @@ export class GameObject {
   stepEntry(delta, root) {
     // call updates on all children first
     this.children.forEach((child) => child.stepEntry(delta, root));
+
+    // call any implemented step code
+    this.step(delta, root);
   }
 
   // called once every frame
