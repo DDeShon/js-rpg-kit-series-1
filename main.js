@@ -1,6 +1,7 @@
 import { Animations } from "./src/Animations.js";
 import { FrameIndexPattern } from "./src/FrameIndexPattern.js";
 import { GameLoop } from "./src/GameLoop.js";
+import { GameObject } from "./src/GameObject.js";
 import { DOWN, Input, LEFT, RIGHT, UP } from "./src/Input.js";
 import { resources } from "./src/Resource.js";
 import { Sprite } from "./src/Sprite.js";
@@ -22,16 +23,22 @@ import {
 const canvas = document.querySelector("#game-canvas");
 const ctx = canvas.getContext("2d");
 
+const mainScene = new GameObject({
+  position: new Vector2(0, 0),
+});
+
 // Build up the scene by adding a sky, ground, and hero
 const skySprite = new Sprite({
   resource: resources.images.sky,
   frameSize: new Vector2(320, 180),
 });
+mainScene.addChild(skySprite);
 
 const groundSprite = new Sprite({
   resource: resources.images.ground,
   frameSize: new Vector2(320, 180),
 });
+mainScene.addChild(groundSprite);
 
 const hero = new Sprite({
   resource: resources.images.hero,
@@ -122,16 +129,17 @@ const tryMove = () => {
 };
 
 const draw = () => {
-  skySprite.drawImage(ctx, 0, 0);
-  groundSprite.drawImage(ctx, 0, 0);
+  mainScene.draw(ctx, 0, 0);
+  // skySprite.drawImage(ctx, 0, 0);
+  // groundSprite.drawImage(ctx, 0, 0);
 
-  // Center the hero in the cell
-  const heroOffset = new Vector2(-8, -21);
-  const heroPosX = hero.position.x + heroOffset.x;
-  const heroPosY = hero.position.y + heroOffset.y;
+  // // Center the hero in the cell
+  // const heroOffset = new Vector2(-8, -21);
+  // const heroPosX = hero.position.x + heroOffset.x;
+  // const heroPosY = hero.position.y + heroOffset.y;
 
-  shadow.drawImage(ctx, heroPosX, heroPosY);
-  hero.drawImage(ctx, heroPosX, heroPosY);
+  // shadow.drawImage(ctx, heroPosX, heroPosY);
+  // hero.drawImage(ctx, heroPosX, heroPosY);
 };
 
 const gameLoop = new GameLoop(update, draw);
