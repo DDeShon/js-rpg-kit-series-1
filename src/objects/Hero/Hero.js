@@ -19,6 +19,7 @@ import {
 } from "./heroAnimations.js";
 import { moveTowards } from "../../helpers/moveTowards.js";
 import { walls } from "../../levels/Level1.js";
+import { events } from "../Events.js";
 // import {events} from "../../Events.js";
 
 export class Hero extends GameObject {
@@ -66,6 +67,12 @@ export class Hero extends GameObject {
     if (hasArrived) {
       this.tryMove(root);
     }
+
+    this.tryEmitPosition();
+  }
+
+  tryEmitPosition() {
+    events.emit("HERO_POSITION", this.position);
   }
 
   tryMove(root) {

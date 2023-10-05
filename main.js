@@ -6,6 +6,7 @@ import { Sprite } from "./src/objects/Sprite.js";
 import { Vector2 } from "./src/objects/Vector2.js";
 import { gridCells, isSpaceFree } from "./src/helpers/grid.js";
 import { Hero } from "./src/objects/Hero/Hero.js";
+import { events } from "./src/objects/Events.js";
 
 // selecting the canvas to draw to
 const canvas = document.querySelector("#game-canvas");
@@ -34,6 +35,10 @@ mainScene.addChild(hero);
 
 // add an imput class to the main scene
 mainScene.input = new Input();
+
+events.on("HERO_POSITION", mainScene, (heroPosition) => {
+  console.log("HERO MOVED!", heroPosition);
+});
 
 // establish update and draw loops
 const update = (delta) => {
