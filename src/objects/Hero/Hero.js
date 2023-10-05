@@ -72,7 +72,9 @@ export class Hero extends GameObject {
   }
 
   tryEmitPosition() {
-    events.emit("HERO_POSITION", this.position);
+    if (this.lastX === this.position.x && this.lastY === this.position.y) {
+      return;
+    }
   }
 
   tryMove(root) {
