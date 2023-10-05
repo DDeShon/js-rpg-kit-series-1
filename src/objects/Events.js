@@ -3,6 +3,13 @@ class Events {
   nextId = 0;
 
   // emit event
+  emit(eventName, value) {
+    this.callbacks.forEach((stored) => {
+      if (stored.eventName === eventName) {
+        stored.callback(value);
+      }
+    });
+  }
 
   // subscribe to something happening
   on(eventName, caller, callback) {
