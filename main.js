@@ -23,7 +23,6 @@ const skySprite = new Sprite({
   resource: resources.images.sky,
   frameSize: new Vector2(320, 180),
 });
-mainScene.addChild(skySprite);
 
 const groundSprite = new Sprite({
   resource: resources.images.ground,
@@ -48,6 +47,8 @@ const update = (delta) => {
 const draw = () => {
   // clear the canvas
   ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
+
+  skySprite.drawImage(ctx, 0, 0);
 
   // save the current state
   ctx.save();
