@@ -8,6 +8,7 @@ import { gridCells, isSpaceFree } from "./src/helpers/grid.js";
 import { Hero } from "./src/objects/Hero/Hero.js";
 import { events } from "./src/Events.js";
 import { Camera } from "./src/Camera.js";
+import { Rod } from "./src/objects/Rod/Rod.js";
 
 // selecting the canvas to draw to
 const canvas = document.querySelector("#game-canvas");
@@ -35,6 +36,9 @@ mainScene.addChild(hero);
 
 const camera = new Camera();
 mainScene.addChild(camera);
+
+const rod = new Rod(gridCells(7), gridCells(6));
+mainScene.addChild(rod);
 
 // add an imput class to the main scene
 mainScene.input = new Input();
