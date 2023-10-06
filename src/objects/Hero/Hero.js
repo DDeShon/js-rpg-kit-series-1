@@ -58,9 +58,14 @@ export class Hero extends GameObject {
     this.facingDirection = DOWN;
     this.destinationPosition = this.position.duplicate();
     this.itemPickupTime = 0;
+
+    events.on("HERO_PICKS_UP_ITEM", this, (data) => {
+      this.onPickUpItem(data);
+    });
   }
 
   step(delta, root) {
+    // lock movement if celebrating item pickup
     if (this.itemPickupTime > 0) {
       this.workOnItemPickup(delta);
       return;
@@ -133,6 +138,14 @@ export class Hero extends GameObject {
       this.destinationPosition.x = nextX;
       this.destinationPosition.y = nextY;
     }
+  }
+
+  onPickUpItem({ image, position }) {
+    // stop movement on pickup
+    this.destinationPosition = position.duplicate();
+
+    // start pickup animation
+    this.itemPickupTime = 500; // ms
   }
 
   workOnItemPickup(delta) {
