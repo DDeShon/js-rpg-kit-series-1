@@ -4,6 +4,7 @@ export class GameObject {
   constructor({ position }) {
     this.position = position ?? new Vector2(0, 0);
     this.children = [];
+    this.parent = null;
   }
 
   // first entry point of the loop
@@ -32,7 +33,17 @@ export class GameObject {
 
   drawImage(ctx, drawPosX, drawPosY) {}
 
+  // remove from the tree
+  destroy() {
+    this.children.forEach((child) => {
+      child.destroy();
+    });
+    this.parent.removeChild(this);
+  }
+
+  // other game objects are nestable inside this one
   addChild(gameObject) {
+    gameObject.parent = this;
     this.children.push(gameObject);
   }
 
