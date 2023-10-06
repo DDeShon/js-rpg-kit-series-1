@@ -1,11 +1,11 @@
-import { GameObject } from "../GameObject.js";
-import { Vector2 } from "../Vector2.js";
-import { DOWN, LEFT, RIGHT, UP } from "../Input.js";
+import { GameObject } from "../../GameObject.js";
+import { Vector2 } from "../../Vector2.js";
+import { DOWN, LEFT, RIGHT, UP } from "../../Input.js";
 import { isSpaceFree } from "../../helpers/grid.js";
-import { Sprite } from "../Sprite.js";
-import { resources } from "../Resource.js";
-import { Animations } from "../Animations.js";
-import { FrameIndexPattern } from "../FrameIndexPattern.js";
+import { Sprite } from "../../Sprite.js";
+import { resources } from "../../Resource.js";
+import { Animations } from "../../Animations.js";
+import { FrameIndexPattern } from "../../FrameIndexPattern.js";
 import {
   //   PICK_UP_DOWN,
   STAND_DOWN,
@@ -19,8 +19,7 @@ import {
 } from "./heroAnimations.js";
 import { moveTowards } from "../../helpers/moveTowards.js";
 import { walls } from "../../levels/Level1.js";
-import { events } from "../Events.js";
-// import {events} from "../../Events.js";
+import { events } from "../../Events.js";
 
 export class Hero extends GameObject {
   constructor(x, y) {
