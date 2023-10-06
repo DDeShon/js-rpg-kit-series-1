@@ -33,5 +33,9 @@ export class Rod extends GameObject {
     // remove this instance from the scene
     this.destroy();
     // alert other things that the rod was picked up (inventory, stats, etc..)
+    events.emit("HERO_PICKS_UP_ITEM", {
+      image: resources.images.rod,
+      position: this.position,
+    });
   }
 }
