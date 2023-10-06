@@ -24,9 +24,13 @@ export class Rod extends GameObject {
         roundedHeroX === this.position.x &&
         roundedHeroY === this.position.y
       ) {
-        // overlaps
-        console.log("OVERLAP!");
+        this.onCollideWithHero();
       }
     });
+  }
+
+  onCollideWithHero() {
+    // remove this instance from the scene
+    // alert other things that the rod was picked up (inventory, stats, etc..)
   }
 }
