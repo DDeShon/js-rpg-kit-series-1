@@ -31,6 +31,7 @@ export class Rod extends GameObject {
 
   onCollideWithHero() {
     // remove this instance from the scene
+    this.destroy();
     // alert other things that the rod was picked up (inventory, stats, etc..)
   }
 }
