@@ -58,6 +58,7 @@ export class Hero extends GameObject {
     this.facingDirection = DOWN;
     this.destinationPosition = this.position.duplicate();
     this.itemPickupTime = 0;
+    this.itemPickupShell = null;
 
     events.on("HERO_PICKS_UP_ITEM", this, (data) => {
       this.onPickUpItem(data);
@@ -146,6 +147,15 @@ export class Hero extends GameObject {
 
     // start pickup animation
     this.itemPickupTime = 500; // ms
+
+    this.itemPickupShell = new GameObject({});
+    this.itemPickupShell.addChild(
+      new Sprite({
+        resource: image,
+        position: new Vector2(0, -18),
+      })
+    );
+    this.addChild(this.itemPickupShell);
   }
 
   workOnItemPickup(delta) {
