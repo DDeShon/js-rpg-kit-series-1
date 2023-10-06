@@ -161,5 +161,9 @@ export class Hero extends GameObject {
   workOnItemPickup(delta) {
     this.itemPickupTime -= delta;
     this.body.animations.play("pickUpDown");
+
+    if (this.itemPickupTime <= 0) {
+      this.itemPickupShell.destroy();
+    }
   }
 }
