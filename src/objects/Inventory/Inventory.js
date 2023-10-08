@@ -20,12 +20,15 @@ export class Inventory extends GameObject {
     // reacto to hero picking up an item
     events.on("HERO_PICKS_UP_ITEM", this, (data) => {
       // show something on the screen
+    });
+  }
+
+  renderInventory() {
+    this.items.forEach((item) => {
       const sprite = new Sprite({
-        resource: resources.images.rod,
+        resource: item.image,
       });
       this.addChild(sprite);
     });
   }
-
-  renderInventory() {}
 }
