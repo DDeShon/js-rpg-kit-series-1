@@ -1,6 +1,6 @@
-import { GameObject } from "../../GameObject";
-import { resources } from "../../Resource";
-import { Sprite } from "../../Sprite";
+import { GameObject } from "../../GameObject.js";
+import { resources } from "../../Resource.js";
+import { Sprite } from "../../Sprite.js";
 
 export class Inventory extends GameObject {
   constructor() {
