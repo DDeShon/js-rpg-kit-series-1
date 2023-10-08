@@ -21,9 +21,16 @@ export class Inventory extends GameObject {
     events.on("HERO_PICKS_UP_ITEM", this, (data) => {
       // show something on the screen
     });
+
+    // draw initial state on load
+    this.renderInventory();
   }
 
   renderInventory() {
+    // remove previous children
+    this.children.forEach((child) => child.destroy());
+
+    // draw fresh from the latest version of the list
     this.items.forEach((item) => {
       const sprite = new Sprite({
         resource: item.image,
