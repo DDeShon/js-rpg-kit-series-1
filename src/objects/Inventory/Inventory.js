@@ -10,16 +10,24 @@ export class Inventory extends GameObject {
       position: new Vector2(0, 2),
     });
 
+    this.nextId = 0;
     this.items = [
       {
         id: -1,
+        image: resources.images.rod,
+      },
+      {
+        id: -2,
         image: resources.images.rod,
       },
     ];
 
     // reacto to hero picking up an item
     events.on("HERO_PICKS_UP_ITEM", this, (data) => {
-      // show something on the screen
+      this.nextId += 1;
+      this.items.push({
+        id: this.nextId,
+      });
     });
 
     // draw initial state on load
@@ -31,9 +39,10 @@ export class Inventory extends GameObject {
     this.children.forEach((child) => child.destroy());
 
     // draw fresh from the latest version of the list
-    this.items.forEach((item) => {
+    this.items.forEach((item, index) => {
       const sprite = new Sprite({
         resource: item.image,
+        position: new Vector2(index * 12, 0),
       });
       this.addChild(sprite);
     });
