@@ -33,9 +33,9 @@ export class Inventory extends GameObject {
     });
 
     // demo removing of an item from inventory
-    setTimeout(() => {
-      this.removeFromInventory(-2);
-    }, 2000);
+    // setTimeout(() => {
+    //   this.removeFromInventory(-2);
+    // }, 2000);
 
     // draw initial state on load
     this.renderInventory();
