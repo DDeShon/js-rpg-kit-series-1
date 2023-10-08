@@ -27,8 +27,15 @@ export class Inventory extends GameObject {
       this.nextId += 1;
       this.items.push({
         id: this.nextId,
+        image: resources.images.rod,
       });
+      this.renderInventory();
     });
+
+    // demo removing of an item from inventory
+    setTimeout(() => {
+      this.removeFromInventory(-2);
+    }, 2000);
 
     // draw initial state on load
     this.renderInventory();
@@ -46,5 +53,10 @@ export class Inventory extends GameObject {
       });
       this.addChild(sprite);
     });
+  }
+
+  removeFromInventory(id) {
+    this.items = this.items.filter((item) => item.id !== id);
+    this.renderInventory();
   }
 }
