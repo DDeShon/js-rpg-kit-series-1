@@ -10,6 +10,13 @@ export class Inventory extends GameObject {
       position: new Vector2(0, 2),
     });
 
+    this.items = [
+      {
+        id: -1,
+        image: resources.images.rod,
+      },
+    ];
+
     // reacto to hero picking up an item
     events.on("HERO_PICKS_UP_ITEM", this, (data) => {
       // show something on the screen
@@ -19,4 +26,6 @@ export class Inventory extends GameObject {
       this.addChild(sprite);
     });
   }
+
+  renderInventory() {}
 }
