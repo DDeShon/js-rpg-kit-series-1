@@ -6,6 +6,7 @@ export class GameObject {
     this.position = position ?? new Vector2(0, 0);
     this.children = [];
     this.parent = null;
+    this.hasReadyBeenCalled = false;
   }
 
   // first entry point of the loop
