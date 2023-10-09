@@ -14,8 +14,19 @@ export class GameObject {
     // call updates on all children first
     this.children.forEach((child) => child.stepEntry(delta, root));
 
+    // call ready on the first frame
+    if (!this.hasReadyBeenCalled) {
+      this.hasReadyBeenCalled = true;
+      this.ready();
+    }
+
     // call any implemented step code
     this.step(delta, root);
+  }
+
+  // called before the first step
+  ready() {
+    //
   }
 
   // called once every frame
