@@ -26,11 +26,13 @@ export class GameObject {
 
   // called before the first step
   ready() {
-    //
+    // ...
   }
 
   // called once every frame
-  step(_delta) {}
+  step(_delta) {
+    // ...
+  }
 
   // draw entry
   draw(ctx, x, y) {
